@@ -1,5 +1,17 @@
-//importing java point class
-
+/**
+ * Creates Objects of type disk, square or jewel
+ * These objects have the following attributes:
+ * 	private String type;	//to store object type e.g square, jewel, disk. This is more convenient than three classes in the given situation.
+ *	private double width;	//width of square/jewel, diameter of circle, etc
+ *	private Point position;	//coordinates of object center
+ *	private double v;	//speed in direction of given angle (velocity) | units are meters per second
+ *	private double angle;  //angle entered in degrees, stored in degrees
+ *	private double xV;	//velocity in positive x direction
+ *	private double yV;	//velocity in positive y direction
+ *	private double g = -9.8;	//default set in meters per second squared, not final for interesting possibilities
+ * @author tahaalibak
+ *
+ */
 
 
 public class Object {
@@ -15,6 +27,10 @@ public class Object {
 	
 	//constructor method for any object
 	public Object(String type, double width, Point position, double v, double angle){
+		/**
+		 * This is the main constructor method.
+		 * Input required: type, width, position, velocity, angle
+		 */
 		this.type = type;
 		this.setPosition(position);
 		this.angle = angle;
@@ -29,6 +45,9 @@ public class Object {
 	
 	//to freeze a moving object
 	public void freezer(){
+		/**
+		 * This method freezes moving objects (same as setting to static)
+		 */	
 		this.v=0;
 		this.setG(0);
 		this.resolver();
@@ -36,6 +55,9 @@ public class Object {
 	
 	//to resolve velocity in x and y directions
 	public void resolver(){
+		/**
+		 * This method resolves an object's velocity and angle to velocities in positive x and y directions.
+		 */
 		this.angle = java.lang.Math.toRadians(this.angle);
 		this.setxV(this.v*java.lang.Math.cos(this.angle));
 		this.setyV(this.v*java.lang.Math.sin(this.angle));	
@@ -43,6 +65,9 @@ public class Object {
 
 	//to reset after a catch
 	public void release(double v, double angle){
+		/**
+		 * This method maybe used to reactivate a frozen object
+		 */
 		this.g = -9.8;
 		this.angle = angle;
 		this.v = v;

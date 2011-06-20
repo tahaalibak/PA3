@@ -1,12 +1,16 @@
-//Randomly generates game level of desired difficulty level
-
+/**
+ * This Class is used to create random levels
+ * Game levels do have a difficulty level that may be specified
+ */
 import java.util.LinkedList;
 import java.util.Random;
 
 public class LevelCreator {
 	
 	public LevelCreator(){
-		//default constructor;
+		/**
+		 * This is the default constructor.
+		 */
 	}
 	
 	//Creates a game level, given a difficulty setting
