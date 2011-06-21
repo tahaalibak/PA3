@@ -11,25 +11,21 @@ import java.util.Scanner;
 
 public class GamePlay {
 	
-	//default constructor
-	public GamePlay(){
 	/**
 	 * This is a default constructor
 	 */
+	public GamePlay(){
 	}
 	
-	//carries out calculations based on Newtonian mechanics
-	//time elapsed (t) is in seconds
-	//updates object accordingly
+	
+	/**
+	 * Carries out all the calculations based on Newtonian mechanics and updates fields appropriately
+	 * Time elapsed is in seconds
+	 * use s = u*t + 0.5*a*t^2 to update object position
+	 * uses v = u + a*t to update object velocity
+	 */
 	public static void updater(double t, Object object){
-		
-		/**
-		 * Carries out all the calculations based on Newtonian mechanics and updates fields appropriately
-		 * Time elapsed is in seconds
-		 * use s = u*t + 0.5*a*t^2 to update object position
-		 * uses v = u + a*t to update object velocity
-		 */
-		
+
 		//Fields
 		Point temp = new Point();
 		
@@ -56,12 +52,11 @@ public class GamePlay {
 		}
 	}
 	
-	//freezes objects if they collide and locks them from being moved again
+	/**
+	 * This method checks if two objects collide and if so,locks them
+	 * Returns type boolean to answer whether they collided
+	 */
 	public static boolean collisionControl(Object a, Object b){
-		/**
-		 * This method checks if two objects collide and if so,locks them
-		 * Returns type boolean to answer whether they collided
-		 */
 		//Sets a proximity level at which objects freeze
 		double distanceThreshold = a.getWidth()/2+b.getWidth()/2;
 		//calculates the actual distance between centers of objects
@@ -76,12 +71,12 @@ public class GamePlay {
 		return false;
 	}
 	
-	//checks an object for collision with all other objects
+	/**
+	 * Given an object and a list of other objects, this method checks whether the object collides with anything from the list
+	 * Returns true if any collision occurs
+	 */
 	public static boolean collides(Object object, LinkedList<Object> objects) {
-		/**
-		 * Given an object and a list of other objects, this method checks whether the object collides with anything from the list
-		 * Returns true if any collision occurs
-		 */
+
 		LinkedList<Object> copy = new LinkedList<Object>();
 		copy.addAll(objects);
 		copy.remove(object);
@@ -93,11 +88,10 @@ public class GamePlay {
 		return false;
 	}
 	
-	//prints types and locations of all objects in given level
+	/**
+	 * This method prints a list of all the objects that define the level
+	 */
 	public static void printer(LinkedList<Object> objects){
-		/**
-		 * This method prints a list of all the objects that define the level
-		 */
 		System.out.println();
 		for (int i = 0; i<objects.size(); i++){
 			System.out.println(objects.get(i).getType()+": "+"("+objects.get(i).getPosition().getX()+","+objects.get(i).getPosition().getY()+")");
@@ -105,11 +99,10 @@ public class GamePlay {
 		System.out.println();
 	}
 	
-	//returns whether player has any disks left in given level
+	/**
+	 * This method returns true or false to whether the player has any disks left
+	 */
 	public static boolean disksRemain(LinkedList<Object> level){
-		/**
-		 * This method returns true or false to whether the player has any disks left
-		 */
 		boolean disksRemain = false;
 		for (int i=0; i<level.size(); i++){
 			if (level.get(i).getType().equals("disk")){
@@ -119,11 +112,10 @@ public class GamePlay {
 		return disksRemain;
 	}
 	
-	//returns whether there are any jewels left in given level
+	/**
+	 * This method returns true or false to whether there are any jewels left
+	 */
 	public static boolean jewelsRemain(LinkedList<Object> level){
-		/**
-		 * This method returns true or false to whether there are any jewels left
-		 */
 		boolean jewelsRemain = false;
 		for (int i=0; i<level.size(); i++){
 			if (level.get(i).getType().equals("jewel")){
@@ -133,11 +125,10 @@ public class GamePlay {
 		return jewelsRemain;
 	}
 	
-	//returns whether the level is still playable
+	/**
+	 * This method checks jewels, disks and time left. Accordingly, it determines whether the game is still playable.
+	 */
 	public static boolean isPlayable(boolean disksRemain, boolean jewelsRemain, double timeRemaining){
-		/**
-		 * This method checks jewels, disks and time left. Accordingly, it determines whether the game is still playable.
-		 */
 		boolean isPlayable = true;
 		if (disksRemain==false || jewelsRemain==false || timeRemaining<=0){
 			isPlayable=false;
@@ -147,14 +138,12 @@ public class GamePlay {
 	
 	
 	
-	//continuesPlaying the game until out of disks or jewels or time
+	/**
+	 * This method loops turns of game-play until the game level ends
+	 * It also prints the result at the end of the game.
+	 * Returns boolean answer
+	 */
 	public static void continuePlay(LinkedList<Object> level){
-
-		/**
-		 * This method loops turns of game-play until the game level ends
-		 * It also prints the result at the end of the game.
-		 * Returns boolean answer
-		 */
 		
 		double timeRemaining = 200; //total time to finish level in seconds
 		double moveTime = 0;
@@ -183,15 +172,13 @@ public class GamePlay {
 		}
 	}
 	
-	//play level
+	/**
+	 * This method runs one turn of the game
+	 * It takes the level and the time left as its input
+	 * Then executes the turn until a collision or stopping when turn time or level time expires
+	 * Returns the span of time for which the turn was being carried out
+	 */
 	public static double play (LinkedList<Object> level, double timeLeft){
-		
-		/**
-		 * This method runs one turn of the game
-		 * It takes the level and the time left as its input
-		 * Then executes the turn until a collision or stopping when turn time or level time expires
-		 * Returns the span of time for which the turn was being carried out
-		 */
 		
 		//fields
 		Scanner console = new Scanner(System.in);

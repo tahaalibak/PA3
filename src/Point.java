@@ -1,4 +1,8 @@
-//a point class that may store doubles
+/**
+ * My own Point class to easily deal store and retrieve point coordinates in doubles
+ * @author tahaalibak
+ *
+ */
 public class Point {
 
 	//fields:

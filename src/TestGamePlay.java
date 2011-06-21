@@ -1,3 +1,9 @@
+/**
+ * This class serves to test the game play
+ * It asks user for difficulty level
+ * Creates and initializes level and game
+ * Prints level and lets the user play till its end
+ */
 import java.util.LinkedList;
 import java.util.Scanner;
 

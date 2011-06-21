@@ -25,12 +25,11 @@ public class Object {
 	private double yV;	//velocity in positive y direction
 	private double g = -9.8;	//default set in meters per second squared, not final for interesting possibilities
 	
-	//constructor method for any object
+	/**
+	 * This is the main constructor method.
+	 * Input required: type, width, position, velocity, angle
+	 */
 	public Object(String type, double width, Point position, double v, double angle){
-		/**
-		 * This is the main constructor method.
-		 * Input required: type, width, position, velocity, angle
-		 */
 		this.type = type;
 		this.setPosition(position);
 		this.angle = angle;
@@ -43,31 +42,28 @@ public class Object {
 		
 	}
 	
-	//to freeze a moving object
+	/**
+	 * This method freezes moving objects (same as setting to static)
+	 */	
 	public void freezer(){
-		/**
-		 * This method freezes moving objects (same as setting to static)
-		 */	
 		this.v=0;
 		this.setG(0);
 		this.resolver();
 	}
 	
-	//to resolve velocity in x and y directions
+	/**
+	 * This method resolves an object's velocity and angle to velocities in positive x and y directions.
+	 */
 	public void resolver(){
-		/**
-		 * This method resolves an object's velocity and angle to velocities in positive x and y directions.
-		 */
 		this.angle = java.lang.Math.toRadians(this.angle);
 		this.setxV(this.v*java.lang.Math.cos(this.angle));
 		this.setyV(this.v*java.lang.Math.sin(this.angle));	
 	}
 
-	//to reset after a catch
+	/**
+	 * This method maybe used to reactivate a frozen object
+	 */
 	public void release(double v, double angle){
-		/**
-		 * This method maybe used to reactivate a frozen object
-		 */
 		this.g = -9.8;
 		this.angle = angle;
 		this.v = v;

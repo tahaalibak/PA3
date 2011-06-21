@@ -7,12 +7,19 @@ import java.util.Random;
 
 public class LevelCreator {
 	
+	/**
+	 * This is the default constructor.
+	 */
 	public LevelCreator(){
-		/**
-		 * This is the default constructor.
-		 */
 	}
 	
+	/**
+	 * Given a level of difficulty, this class creates and returns a level
+	 * A level is a linked list of objects
+	 * The objects contain their own locations and other properties
+	 * @param difficulty
+	 * @return
+	 */
 	//Creates a game level, given a difficulty setting
 	public static LinkedList<Object> level(int difficulty){
 		
