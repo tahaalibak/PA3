@@ -116,5 +116,27 @@ public class LevelCreator {
 		return objects; //this list of objects now defines the game level
 		
 	}
+	
+	public static int testThis(){
+		int check = 0;
+
+		LinkedList<Object> easy = level(1);
+		LinkedList<Object> medium = level(2);
+		LinkedList<Object> hard = level(3);
+		
+		if (easy.size()!=7){
+			check++;
+		}
+		
+		if (medium.size()!=12){
+			check++;
+		}
+		
+		if (hard.size()!=15){
+			check++;
+		}
+		
+		return check;
+	}
 
 }

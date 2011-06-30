@@ -29,9 +29,6 @@ public class TestGamePlay {
 		System.out.println();
 		System.out.println("Starting Game:");
 		GamePlay.continuePlay(level);
-		
-		
-	}
-	
+	}	
 	
 }

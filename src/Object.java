@@ -140,4 +140,32 @@ public class Object {
 	public String getType() {
 		return type;
 	}
+	
+	/**
+	 * test method
+	 * returns 0 if all tests successful
+	 * returns number of fails if test(s) fails
+	 */
+	public static int testThis(){
+		int check = 0;
+		Object disk1 = new Object("disk", 2, new Point(1,0), 2, 0);
+		
+		disk1.freezer();
+		if (disk1.getG()!=0){
+			check++;
+		}
+		
+		disk1.release(10,10);
+		if (disk1.getG()==0){
+			check++;
+		}
+		
+		//checking resolver method that is called during release
+		if (disk1.getxV()==0){
+			check++;
+		}
+		
+		return check;
+	}
+	
 }

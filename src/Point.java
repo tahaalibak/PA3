@@ -44,4 +44,32 @@ public class Point {
 	public double getY() {
 		return y;
 	}
+	
+	public static int testThis(){
+		int check = 0;
+
+		Point test1 = new Point(0,0);
+		
+		if (test1.getX()!=0){
+			check++;
+		}
+		
+		test1.setX(1);
+		
+		if (test1.getX()!=1){
+			check++;
+		}
+		
+		if (test1.getY()!=0){
+			check++;
+		}
+		
+		test1.setY(1);
+		
+		if (test1.getY()!=1){
+			check++;
+		}
+		
+		return check;
+	}
 }

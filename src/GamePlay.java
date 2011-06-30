@@ -230,4 +230,49 @@ public class GamePlay {
 		
 		return timeSpanned;
 	}
+	
+	/**
+	 * test method
+	 * returns 0 if all tests successful
+	 * returns number of fails if test(s) fails
+	 */
+	public static int testThis(){
+		int check = 0;
+		Object disk1 = new Object("disk", 2, new Point(1,0), 2, 0);
+		Object disk2 = new Object("disk", 2, new Point(1,0), 3, 0);
+		Object disk3 = new Object("disk", 2, new Point(10,10), 3, 0);
+		LinkedList<Object> objects = new LinkedList<Object>();
+		
+		updater(1,disk2);
+		if (disk2.getPosition().getX() == 1){
+			check++;
+		}
+		
+		if (collisionControl(disk1,disk2)==true){
+			check++;
+		}
+		
+		objects.add(disk2);
+		objects.add(disk3);
+		if (collides(disk1,objects)==true){
+			check++;
+		}
+				
+
+		boolean disksRemain = disksRemain(objects);
+		boolean jewelsRemain = jewelsRemain(objects);
+		
+		if (disksRemain == false){
+			check++;
+		}
+		
+		if (jewelsRemain == true){
+			check++;
+		}
+		
+		if (isPlayable(disksRemain,jewelsRemain,1000)==true){
+			check++;
+		}
+		return check;
+	}
 }
